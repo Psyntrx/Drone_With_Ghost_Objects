@@ -48,6 +48,10 @@ public class SlotReceiver : MonoBehaviour
         part.transform.position = transform.position + snapPositionOffset;
         part.transform.rotation = transform.rotation;
 
+        //Register slot on the part
+        var snapPart = part.GetComponent<SnapPart>();
+        if (snapPart != null) snapPart.CurrentSlot = this;
+
         if (droneManager != null)
             droneManager.OnPartPlaced();
     }

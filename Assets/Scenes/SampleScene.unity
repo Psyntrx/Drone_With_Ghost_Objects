@@ -894,6 +894,18 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &770777532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237697944594394350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1656cc57cd4542847f85b6e7d3e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapPart
 --- !u!114 &804003737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +925,18 @@ MonoBehaviour:
   scrollSpeed: 0.5
   minHoldDistance: 0.5
   maxHoldDistance: 10
+--- !u!114 &812012911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237697944594394354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1656cc57cd4542847f85b6e7d3e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapPart
 --- !u!1 &813864245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1234,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1361370406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237697944594394346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1656cc57cd4542847f85b6e7d3e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapPart
 --- !u!1 &1440771278
 GameObject:
   m_ObjectHideFlags: 0
@@ -16979,6 +17015,7 @@ GameObject:
   - component: {fileID: 6237697944594428099}
   - component: {fileID: 6237697944594428097}
   - component: {fileID: 6237697944594428103}
+  - component: {fileID: 6237697944594428105}
   m_Layer: 0
   m_Name: BatteryPack
   m_TagString: Battery
@@ -17069,6 +17106,7 @@ GameObject:
   - component: {fileID: 6237697944594428109}
   - component: {fileID: 6237697944594428107}
   - component: {fileID: 804003737}
+  - component: {fileID: 1361370406}
   m_Layer: 0
   m_Name: Blade1
   m_TagString: Propeller
@@ -17109,6 +17147,7 @@ GameObject:
   - component: {fileID: 6237697944594428113}
   - component: {fileID: 6237697944594428111}
   - component: {fileID: 1986412855}
+  - component: {fileID: 770777532}
   m_Layer: 0
   m_Name: Blade3
   m_TagString: Propeller
@@ -17149,6 +17188,7 @@ GameObject:
   - component: {fileID: 6237697944594428117}
   - component: {fileID: 6237697944594428115}
   - component: {fileID: 2076719737}
+  - component: {fileID: 812012911}
   m_Layer: 0
   m_Name: Blade2
   m_TagString: Propeller
@@ -17189,6 +17229,7 @@ GameObject:
   - component: {fileID: 6237697944594428121}
   - component: {fileID: 6237697944594428119}
   - component: {fileID: 6237697944594428125}
+  - component: {fileID: 6237697944594428127}
   m_Layer: 0
   m_Name: Blade4
   m_TagString: Propeller
@@ -17542,6 +17583,18 @@ Transform:
   - {fileID: 6237697944594428124}
   m_Father: {fileID: 6237697944594428120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6237697944594428105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237697944594394336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1656cc57cd4542847f85b6e7d3e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapPart
 --- !u!4 &6237697944594428106
 Transform:
   m_ObjectHideFlags: 0
@@ -18379,6 +18432,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6237697944594428120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6237697944594428127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237697944594394358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1656cc57cd4542847f85b6e7d3e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapPart
 --- !u!4 &6237697944594428128
 Transform:
   m_ObjectHideFlags: 0

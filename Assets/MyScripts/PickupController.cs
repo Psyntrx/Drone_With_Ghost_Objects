@@ -27,13 +27,17 @@ public class PickupController : MonoBehaviour
     // Finds which slot this part is currently snapped into
     private SlotReceiver GetCurrentSlot()
     {
-        foreach (SlotReceiver slot in allSlots)
+       /* foreach (SlotReceiver slot in allSlots)
         {
             if (slot.isOccupied &&
                 Vector3.Distance(transform.position, slot.transform.position) < 0.1f)
                 return slot;
         }
         return null;
+      */
+
+        var snapPart = GetComponent<SnapPart>();
+        return snapPart != null ? snapPart.CurrentSlot: null;
     }
 
 
@@ -151,7 +155,14 @@ public class PickupController : MonoBehaviour
         // If this part was snapped, tell its slot it is now vacant
         SlotReceiver occupiedSlot = GetCurrentSlot();
         if (occupiedSlot != null)
+        {
             occupiedSlot.VacateSlot();
+
+           var  snapPart = GetComponent<SnapPart>();
+            if (snapPart != null)
+                snapPart.CurrentSlot = null;
+        }
+
     }
 
     private void Release()
