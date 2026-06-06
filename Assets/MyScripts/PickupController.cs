@@ -133,7 +133,7 @@ public class PickupController : MonoBehaviour
 
     private void OnVRGrab(SelectEnterEventArgs args)
     {
-        ShowAllMatchingGhosts();
+        HandlePickUp();
     }
 
     private void OnVRRelease(SelectExitEventArgs args)
@@ -144,6 +144,19 @@ public class PickupController : MonoBehaviour
 
     // ── PICK UP / RELEASE ───────────────────────────────────────
 
+    private void HandlePickUp()
+    {
+        SlotReceiver occupiedSlot = GetCurrentSlot();
+        if (occupiedSlot != null)
+        {
+            occupiedSlot.VacateSlot();
+            var snapPart = GetComponent<SnapPart>();
+            if (snapPart != null)
+                snapPart.CurrentSlot = null;
+        }
+
+        ShowAllMatchingGhosts();
+    }
     private void PickUp()
     {
         isHeld = true;
@@ -152,8 +165,10 @@ public class PickupController : MonoBehaviour
         rb.linearDamping = 10f;
         rb.angularDamping = 10f;
 
+        HandlePickUp();
+
         // If this part was snapped, tell its slot it is now vacant
-        SlotReceiver occupiedSlot = GetCurrentSlot();
+        /*SlotReceiver occupiedSlot = GetCurrentSlot();
         if (occupiedSlot != null)
         {
             occupiedSlot.VacateSlot();
@@ -161,7 +176,7 @@ public class PickupController : MonoBehaviour
            var  snapPart = GetComponent<SnapPart>();
             if (snapPart != null)
                 snapPart.CurrentSlot = null;
-        }
+        } */
 
     }
 
