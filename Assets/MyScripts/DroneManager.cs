@@ -172,4 +172,22 @@ public class DroneManager : MonoBehaviour
 
         Debug.Log("Drone incomplete — returning to ground.");
     }
+
+    public void ResetDrone()
+    {
+        partsPlaced = 0;
+        droneActive = false;
+        isFalling = false;
+        propellerSpinSpeed = 720f;
+        transform.position = groundPosition;
+
+        if (droneAudioSource != null)
+            droneAudioSource.Stop();
+
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+    }
 }
