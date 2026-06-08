@@ -18,6 +18,12 @@ public class DroneManager : MonoBehaviour
     public float hoverRiseSpeed = 2f;
     public float hoverHeight = 1.5f;
 
+    // Spin direction per slot — tick = clockwise, untick = counter-clockwise
+    public bool propellerFL_Clockwise = false;
+    public bool propellerFR_Clockwise = true;
+    public bool propellerBL_Clockwise = false;
+    public bool propellerBR_Clockwise = true;
+
     [Header("Fall and Return")]
     public float fallSpeed = 3f;          // How fast drone drops back down
     public float groundSnapDistance = 0.05f; // How close before it locks to ground
@@ -47,20 +53,22 @@ public class DroneManager : MonoBehaviour
         }
     }
 
+    private void SpinPropeller(Transform propeller, bool clockwise)
+    {
+        if (propeller == null) return;
+        float direction = clockwise ? 1f : -1f;
+        propeller.Rotate(Vector3.forward, direction * propellerSpinSpeed * Time.deltaTime, Space.Self);
+    }
     private void Update()
     {
         // ── HOVERING ──
         if (droneActive)
         {
             // Spin propellers
-            if (propellerFL != null)
-                propellerFL.Rotate(Vector3.forward, propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerFR != null)
-                propellerFR.Rotate(Vector3.forward, -propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerBL != null)
-                propellerBL.Rotate(Vector3.forward, -propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerBR != null)
-                propellerBR.Rotate(Vector3.forward, propellerSpinSpeed * Time.deltaTime, Space.Self);
+            SpinPropeller(propellerFL, propellerFL_Clockwise);
+            SpinPropeller(propellerFR, propellerFR_Clockwise);
+            SpinPropeller(propellerBL, propellerBL_Clockwise);
+            SpinPropeller(propellerBR, propellerBR_Clockwise);
 
             // Hover bob
             float targetY = groundPosition.y + hoverHeight
@@ -87,14 +95,10 @@ public class DroneManager : MonoBehaviour
             propellerSpinSpeed = Mathf.Lerp(propellerSpinSpeed, 0f, Time.deltaTime * 2f);
 
             // Spin propellers while falling (slowing down)
-            if (propellerFL != null)
-                propellerFL.Rotate(Vector3.forward, propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerFR != null)
-                propellerFR.Rotate(Vector3.forward, -propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerBL != null)
-                propellerBL.Rotate(Vector3.forward, -propellerSpinSpeed * Time.deltaTime, Space.Self);
-            if (propellerBR != null)
-                propellerBR.Rotate(Vector3.forward, propellerSpinSpeed * Time.deltaTime, Space.Self);
+            SpinPropeller(propellerFL, propellerFL_Clockwise);
+            SpinPropeller(propellerFR, propellerFR_Clockwise);
+            SpinPropeller(propellerBL, propellerBL_Clockwise);
+            SpinPropeller(propellerBR, propellerBR_Clockwise);
 
             // Once close enough to ground — lock it in place
             if (Vector3.Distance(transform.position, groundPosition) < groundSnapDistance)

@@ -6,10 +6,15 @@ public class ResetManager : MonoBehaviour
     [Header("UI")]
     public Button resetButton;
 
-    [Header("Parts - assign each part and its default position/rotation")]
+    [Header("Parts")]
     public GameObject[] parts;
     public Vector3[] defaultPositions;
     public Quaternion[] defaultRotations;
+
+    [Header("Player Reset")]
+    public Transform xrOrigin;
+    public Vector3 defaultPlayerPosition = Vector3.zero;
+    public Quaternion defaultPlayerRotation = Quaternion.identity;
 
     private void Start()
     {
@@ -23,10 +28,10 @@ public class ResetManager : MonoBehaviour
         foreach (SlotReceiver slot in allSlots)
         {
             slot.isOccupied = false;
-            slot.VacateSlot();
+            slot.HideGhost();
         }
 
-        // Reset all parts to their default positions
+        // Reset all parts
         for (int i = 0; i < parts.Length; i++)
         {
             if (parts[i] == null) continue;
@@ -43,17 +48,23 @@ public class ResetManager : MonoBehaviour
             parts[i].transform.position = defaultPositions[i];
             parts[i].transform.rotation = defaultRotations[i];
 
-            // Clear snap reference
             SnapPart snapPart = parts[i].GetComponent<SnapPart>();
             if (snapPart != null)
                 snapPart.CurrentSlot = null;
         }
 
-        // Reset drone manager
+        // Reset drone
         DroneManager droneManager = FindAnyObjectByType<DroneManager>();
         if (droneManager != null)
             droneManager.ResetDrone();
 
-        Debug.Log("Scene reset.");
+        // Reset player
+        if (xrOrigin != null)
+        {
+            xrOrigin.position = defaultPlayerPosition;
+            xrOrigin.rotation = defaultPlayerRotation;
+        }
+
+        Debug.Log("Full reset complete.");
     }
 }
